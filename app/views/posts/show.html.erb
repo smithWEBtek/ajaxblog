@@ -1,0 +1,19 @@
+<h1>Show post</h1>
+
+<h3><%= @post.title %></h3>
+<p><%= @post.content %></p>
+
+<a href="#">Load Comments</a>
+<br>
+<br>
+<br>
+<%= link_to "Edit", edit_post_path(@post) %>
+
+<hr>
+<h3>ajax comments here: </h3>
+<div id='comments-area'></div>
+<hr>
+<h3>rails comments: </h3>
+<% @post.comments.each do |comment| %>
+	<p><%= comment.content %></p>
+<% end %>

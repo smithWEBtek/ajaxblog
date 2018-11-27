@@ -1,0 +1,11 @@
+<h1>All Comments</h1>
+
+<% @comments.each do |comment| %>
+	Post: <%= comment.post.title%>
+	Content: <%= comment.post.content%>
+	<br>
+	<br>
+	comment: <%= comment.content%>
+	<br>
+	<hr>
+<% end %>

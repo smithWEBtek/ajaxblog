@@ -17,3 +17,7 @@ Comment.create(post_id: 1, content: 'I am a cat person.')
 Comment.create(post_id: 2, content: 'Can we have a picnic on your boat?')
 Comment.create(post_id: 2, content: 'Did you paint it red?')
 Comment.create(post_id: 2, content: 'There was a Disney cruise ship called the big red boat.')
+
+Comment.create(post_id: 3, content: 'Aunt Jean had begun drinking early as well.')
+Comment.create(post_id: 3, content: 'Sara brought her famous cheese cake.')
+Comment.create(post_id: 3, content: 'Is there any more guack?')
