@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 	
 	def new
 		@post = Post.new
+		render layout: false
 	end
 	
 	def create

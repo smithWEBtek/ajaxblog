@@ -2,8 +2,9 @@ class CommentsController < ApplicationController
 
 	def index
 		if params["post_id"]
+			@post = Post.find(params["post_id"])
 			@comments = Comment.all.where(post_id: params["post_id"])
-			render partial: 'comments/post_comments', locals: { comments: @comments}
+			render partial: 'comments/post_comments', locals: { comments: @comments, post: @post}
 		else
 			@comments = Comment.all
 			render :index

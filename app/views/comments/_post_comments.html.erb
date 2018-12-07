@@ -1,11 +1,7 @@
-<h1>Post Comments partial</h1>
 
 <% comments.each do |comment| %>
-	Post: <%= comment.post.title%>
-	Content: <%= comment.post.content%>
 	<br>
-	<br>
-	comment: <%= comment.content%>
+	<%= comment.content%>
 	<br>
 	<hr>
 <% end %>

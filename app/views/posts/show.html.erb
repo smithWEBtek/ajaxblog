@@ -3,9 +3,10 @@
 <h3><%= @post.title %></h3>
 <p><%= @post.content %></p>
 
-<a href="#">Load Comments</a>
+<%= link_to "Load Post Comments", post_comments_path(@post), class: "load_comments" %>
 <br>
 <br>
+<div id="comments-div">comments load here...</div>
 <br>
 <%= link_to "Edit", edit_post_path(@post) %>
 

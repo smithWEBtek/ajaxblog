@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ajaxblog</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+	<title>Ajaxblog</title>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-	
-		</head>
+	<script	
+		src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous">
+	</script>
+
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+
+	<%= stylesheet_link_tag    'application', media: 'all' %>
+	<%= javascript_include_tag 'application', 'posts' %>
+
+	</head>
 		
 		<body>
+		<h3>This is the layout nav, in application/layout.html.erb</h3>
 		<%= link_to "All Posts", posts_path %> |
 		<%= link_to "New Post", new_post_path %>
 		<hr>
 		<%= yield %>
-		<script
-		src="https://code.jquery.com/jquery-3.3.1.min.js"
-		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-		crossorigin="anonymous"></script>
   </body>
 </html>
