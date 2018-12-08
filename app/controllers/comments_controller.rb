@@ -4,15 +4,26 @@ class CommentsController < ApplicationController
 		if params["post_id"]
 			@post = Post.find(params["post_id"])
 			@comments = Comment.all.where(post_id: params["post_id"])
-			render partial: 'comments/ajax_post_comments', locals: { comments: @comments, post: @post}
+
+			respond_to do |format|
+				format.html {render partial: 'comments/post_comments', locals: { comments: @comments, post: @post}}
+				format.json {render json: @comments}
+			end
 		else
 			@comments = Comment.all
-			render :index
+			respond_to do |f|
+				f.html {render :index} 
+				f.json {render json: @comments}
+			end
 		end
 	end
-
+	
 	def show
 		@comment = Comment.find(params["id"])
+		respond_to do |f|
+			f.html {render :show} 
+			f.json {render json: @comment}
+		end
 	end
 	
 	def new

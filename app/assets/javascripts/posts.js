@@ -7,17 +7,18 @@ function listenForCommentsClick() {
 	$('a.load_comments').on('click', function (e) {
 		// 	alert('you clicked it');
 		e.preventDefault();
-		getPostComments();
+		getPostComments(this.href);
 	})
 }
 
-function getPostComments() {
+function getPostComments(url) {
 	$.ajax({
 		method: 'GET',
-		url: '/posts/1/comments'
+		url: url,
 	}).done(function (data) {
 		console.log("the data: ", data);
-		$('div#comments-area').html(data);
+		$('div#comments-html-area').html(data); // data in div is replaced
+		// $('div#comments-html-area').append(data); // data piles up!
 	})
 }
 

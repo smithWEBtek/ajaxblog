@@ -16,10 +16,19 @@
 <br>
 
 
-<h3>AJAX loads custom Rails partial:</h3>
+<h3>AJAX loads custom Rails partial(html retrieved from Rails server):</h3>
 <fieldset>
 	<%= link_to "Ajax: Load Comments", post_comments_path(@post), class: "load_comments" %>
 	<br>
-	<div id="comments-area">ajax comments here: </div>
+	<div id="comments-html-area">ajax html comments here: </div>
+	<br>
+</fieldset>
+
+
+<h3>AJAX loads JSON from Rails route/controller/action/model (JSON retrieved from Rails server):</h3>
+<fieldset>
+	<%= link_to "Ajax: Load Comments", post_comments_path(@post), class: "load_comments" %>
+	<br>
+	<div id="comments-json-area">ajax json comments here: </div>
 	<br>
 </fieldset>
