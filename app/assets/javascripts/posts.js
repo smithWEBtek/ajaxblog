@@ -17,13 +17,14 @@ function getPostComments() {
 		url: '/posts/1/comments'
 	}).done(function (data) {
 		console.log("the data: ", data);
-		$('div#comments-div').html(data);
+		$('div#comments-area').html(data);
 	})
 }
 
 function listenForNewPostFormClick() {
-	$('button#new_post').on('click', function (e) {
+	$('.ajax-new-post').on('click', function (e) {
 		e.preventDefault();
+		$('button#new-post').hide()
 		newPostForm();
 	})
 }
@@ -35,10 +36,6 @@ function newPostForm() {
 		success: function (response) {
 			console.log("the response: ", response);
 			$('div#new_post_form').html(response)
-			debugger;
-
 		}
 	})
 }
-
-

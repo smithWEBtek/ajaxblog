@@ -1,8 +1,12 @@
-<h1>All posts</h1>
+<h1>Posts Index</h1>
 
-<button id='new_post'>NewPost</button>
+<fieldset>
+<div id='new_post_form'>new post form shows up here....</div>
+</fieldset>
 
-<div id='new_post_form'>form shows up here....</div>
+<button class='ajax-new-post'>NewPost</button>
+<br>
+<br>
 
 <% @posts.each do |post| %>
 	<h3><%= link_to post.title, post_path(post) %></h3>

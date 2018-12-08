@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 		if params["post_id"]
 			@post = Post.find(params["post_id"])
 			@comments = Comment.all.where(post_id: params["post_id"])
-			render partial: 'comments/post_comments', locals: { comments: @comments, post: @post}
+			render partial: 'comments/ajax_post_comments', locals: { comments: @comments, post: @post}
 		else
 			@comments = Comment.all
 			render :index
@@ -16,14 +16,20 @@ class CommentsController < ApplicationController
 	end
 	
 	def new
-		@comment = Comment.new
+		@post = Post.find(params["post_id"])
+		@comment = @post.comments.build
 	end
 	
 	def create
-		@comment = Comment.new(comment_params)
-		if @comment.save
-			redirect_to comments_path
+		@post = Post.find(params["post_id"])
+		@comment = @post.comments.build
+		if @comment.update(comment_params)
+			respond_to do |format|
+				format.html {redirect_to post_path(@post)}
+				format.json {render json: @comment}
+			end
 		else
+			flash.now[:message] = @comment.errors[:content][0]
 			render :new
 		end
 	end
@@ -48,8 +54,7 @@ class CommentsController < ApplicationController
 	end
 
 	private
-
 		def comment_params
-			params.require(:comment).permit(:title, :content)
+			params.require(:comment).permit(:post_id, :content)
 		end
 end

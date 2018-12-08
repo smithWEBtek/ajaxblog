@@ -18,10 +18,20 @@
 	</head>
 		
 		<body>
-		<h3>This is the layout nav, in application/layout.html.erb</h3>
+ 
 		<%= link_to "All Posts", posts_path %> |
-		<%= link_to "New Post", new_post_path %>
+		<%= link_to "Rails:NewPost", new_post_path %> |
+		<%= link_to "Ajax:NewPost", new_post_path, class: 'ajax-new-post' %>
+ 
 		<hr>
+		
+		<div id="flash_messages" class="flash_style">
+			<% flash.each do |key, value| %>
+				<%= content_tag(:div, value, :class => "flash #{key}") %>
+			<% end %>
+		</div>
+
 		<%= yield %>
-  </body>
+	
+	</body>
 </html>
