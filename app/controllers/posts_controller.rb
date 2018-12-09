@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 		@post = Post.new
 		respond_to do |f|
 			# f.html {render :new, layout: false}
-			f.html {render :new}
+			f.html {render :new, layout: false}
 			f.json {render json: @post}
 		end
 	end

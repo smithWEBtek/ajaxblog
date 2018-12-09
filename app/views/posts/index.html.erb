@@ -1,14 +1,21 @@
 <h1>Posts Index</h1>
 
 <fieldset>
-<div id='new_post_form'>new post form shows up here....</div>
+<div id='new_post_form'>... new_post_form div in Rails view ... </div>
 </fieldset>
-
 <button class='ajax-new-post'>NewPost</button>
 <br>
 <br>
 
+<fieldset>
+<div id='post-details'>...post_details div in Rails view ... </div>
+</fieldset>
+<br>
+<br>
+
+<div id='posts-index'>
 <% @posts.each do |post| %>
 	<h3><%= link_to post.title, post_path(post) %></h3>
-	<p><%= post.content%></p>
+	<p><%= post.content %></p>
 <% end %>
+</div>
