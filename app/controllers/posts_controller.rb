@@ -18,7 +18,11 @@ class PostsController < ApplicationController
 	
 	def new
 		@post = Post.new
-		render layout: false
+		respond_to do |f|
+			# f.html {render :new, layout: false}
+			f.html {render :new}
+			f.json {render json: @post}
+		end
 	end
 	
 	def create
@@ -35,6 +39,11 @@ class PostsController < ApplicationController
 	
 	def edit
 		@post = Post.find(params["id"])
+		respond_to do |f|
+			# f.html {render :new, layout: false}
+			f.html {render :edit}
+			f.json {render json: @post}
+		end
 	end
 	
 	def update
