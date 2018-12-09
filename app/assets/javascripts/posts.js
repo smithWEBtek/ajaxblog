@@ -3,9 +3,10 @@ $(() => {
 	listenerCommentsClick()
 	listenerNewPostFormClick()
 	listenerPostDetailsClick()
+	// listenerNewCommenClick()   why not listen for this on document ready?
 })
 
-// event listener
+// event listener for comment click
 function listenerCommentsClick() {
 	$('a.load_comments').on('click', function (e) {
 		// 	alert('you clicked it');
@@ -14,19 +15,20 @@ function listenerCommentsClick() {
 	})
 }
 
-// function called from event listener
+// function called from event listener : listenerCommentsClick()
 function getPostComments(url) {
 	$.ajax({
 		method: 'GET',
 		url: url,
 	}).done(function (data) {
 		console.log("the data: ", data);
-		$('div#comments-html-area').html(data); // data in div is replaced
-		// $('div#comments-html-area').append(data); // data piles up!
+		// $('div#comments-html-area').html(data); // data in div is replaced // jquery way
+		// $('div#comments-html-area').append(data); // data piles up in DOM on each click!
+		document.getElementById('comments-html-area').innerHTML = data // javascript way
 	})
 }
 
-// event listener
+// event listener for new post form
 function listenerNewPostFormClick() {
 	$('.ajax-new-post').on('click', function (e) {
 		e.preventDefault();
@@ -35,7 +37,7 @@ function listenerNewPostFormClick() {
 	})
 }
 
-// function called from event listener
+// function called from event listener : listenerNewPostFormClick()
 function newPostForm() {
 	$.ajax({
 		url: '/posts/new',
@@ -69,6 +71,7 @@ function listenerPostDetailsClick() {
 			// debugger
 			// $('#post-details').html = html   // why doesn't this work??? dammit!!!
 			document.getElementById('post-details').innerHTML = html
+			listenerNewCommenClick()
 		})
 	})
 }
@@ -82,6 +85,7 @@ class Post {
 	}
 }
 
+// custom function on prototype of Post class
 Post.prototype.createPostHTML = function () {
 	console.log("this: ", this);
 	const comments = (
@@ -90,9 +94,29 @@ Post.prototype.createPostHTML = function () {
 		}).join('')
 	)
 
-	return (`<div>
+	return (`
+		<div>
 			<h3>${this.title}</h3>
 			<p>${this.content}</p>
-			<p>${comments}</p>
-		</div>`)
+			<fieldset>
+				<strong>comments: </strong>
+				<p>${comments}</p>
+				<button id='add-comment'>add a comment</button>
+			</fieldset>	
+		</div>
+	`)
+}
+
+
+// event listener for new comment click, to render new comment form
+// why is this not in our event listeners at the top of this page?
+// could we listen for it too soon, before the list of comments exists?
+// or is it better to call this listener only after we know there are comments on the DOM?
+function listenerNewCommenClick() {
+	$('button#add-comment').on('click', function (e) {
+		alert('you clicked add-comment');
+		e.preventDefault();
+		// load our new comment form
+
+	})
 }
