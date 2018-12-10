@@ -95,14 +95,20 @@ Post.prototype.createPostHTML = function () {
 	)
 
 	return (`
-		<div>
-			<h3>${this.title}</h3>
-			<p>${this.content}</p>
-			<fieldset>
-				<strong>comments: </strong>
-				<p>${comments}</p>
-				<button id='add-comment'>add a comment</button>
-			</fieldset>	
+		<div class="container">
+			<div class="coloumns">
+				<div class="coloumn is-3">
+					<h3 class="title">${this.title}</h3>
+					<p class="body">${this.content}</p>
+				</div>
+				<div class="column is-6">
+					<fieldset>
+						<strong>comments: </strong>
+						<p>${comments}</p>
+						<button id='add-comment'>add a comment</button>
+					</fieldset>	
+				</div>
+			</div>
 		</div>
 	`)
 }

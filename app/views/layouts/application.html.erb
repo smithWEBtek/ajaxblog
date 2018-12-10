@@ -1,33 +1,35 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
   <head>
-	<title>Ajaxblog</title>
-
-
-
-	<%= csrf_meta_tags %>
-	<%= csp_meta_tag %>
-
-	<%= stylesheet_link_tag    'application', media: 'all' %>
-	<%= javascript_include_tag 'application', 'posts' %>
-
-	</head>
-		
-		<body>
- 
-		<%= link_to "All Posts", posts_path %> |
-		<%= link_to "Rails:NewPost", new_post_path %> |
-		<%= link_to "Ajax:NewPost", new_post_path, class: 'ajax-new-post' %>
- 
-		<hr>
-		
-		<div id="flash_messages" class="flash_style">
-			<% flash.each do |key, value| %>
-				<%= content_tag(:div, value, :class => "flash #{key}") %>
-			<% end %>
-		</div>
-
-		<%= yield %>
-	
-	</body>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application', 'posts' %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ajaxblog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">
+          Ajaxblog
+        </h1>
+      </div>
+      <div class="column">
+        <%= link_to "All Posts", posts_path %> |
+        <%= link_to "Rails:NewPost", new_post_path %> |
+        <%= link_to "Ajax:NewPost", new_post_path, class: 'ajax-new-post' %>
+        <hr>
+        <div id="flash_messages" class="flash_style">
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, :class => "flash #{key}") %>
+          <% end %>
+        </div>
+        <%= yield %>
+      </div>
+    </section>
+  </body>
 </html>
