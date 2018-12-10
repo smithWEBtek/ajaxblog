@@ -1,7 +1,7 @@
 {
-  "name": "ajaxblog",
-  "private": true,
-  "dependencies": {
-    "bulma": "^0.7.2"
-  }
+	"name": "ajaxblog",
+	"private": true,
+	"dependencies": {
+		"bulma": "^0.7.2"
+	}
 }
