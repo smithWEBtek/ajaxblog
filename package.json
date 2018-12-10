@@ -2,6 +2,12 @@
 	"name": "ajaxblog",
 	"private": true,
 	"dependencies": {
-		"bulma": "^0.7.2"
+		"@rails/webpacker": "3.5",
+		"bulma": "^0.7.2",
+		"handlebars": "^4.0.12",
+		"handlebars-loader": "^1.7.0"
+	},
+	"devDependencies": {
+		"webpack-dev-server": "2.11.2"
 	}
 }

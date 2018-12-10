@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.4'
 gem 'jquery-rails'
+gem 'webpacker', '~> 3.5'
 
 gem 'active_model_serializers', '~> 0.10.0'
 gem "bulma-rails", "~> 0.7.2"
