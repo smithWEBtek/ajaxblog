@@ -3,14 +3,15 @@ $(() => {
 	listenerCommentsClick()
 	listenerNewPostFormClick()
 	listenerPostDetailsClick()
-	// listenerNewCommenClick()   why not listen for this on document ready?
+	// listenerNewCommenClick()
+	// why do we NOT listen for this on document ready?
 })
 
 // event listener for comment click
 function listenerCommentsClick() {
-	$('a.load_comments').on('click', function (e) {
+	$('a.load_comments').on('click', function (event) {
 		// 	alert('you clicked it');
-		e.preventDefault();
+		event.preventDefault();
 		getPostComments(this.href);
 	})
 }
@@ -53,23 +54,16 @@ function newPostForm() {
 function listenerPostDetailsClick() {
 	$('div#posts-index a').on('click', function (event) {
 		event.preventDefault()
-		console.log(this.href);
+		console.log("this is the url: ", this.href);
 		url = this.href
 		$.ajax({
 			url: url,
 			type: 'get',
 			dataType: 'json'
 		}).done(function (data) {
-			console.log("data returned: ", data);
-
 			let post = new Post(data)
-			console.log("post js object created: ", post);
-
 			let html = post.createPostHTML()
-			console.log("html created:  ", html);
-
-			// debugger
-			// $('#post-details').html = html   // why doesn't this work??? dammit!!!
+			// $('#post-details').html = html   // why doesn't this work?
 			document.getElementById('post-details').innerHTML = html
 			listenerNewCommenClick()
 		})
@@ -113,7 +107,6 @@ Post.prototype.createPostHTML = function () {
 	`)
 }
 
-
 // event listener for new comment click, to render new comment form
 // why is this not in our event listeners at the top of this page?
 // could we listen for it too soon, before the list of comments exists?
@@ -123,6 +116,5 @@ function listenerNewCommenClick() {
 		alert('you clicked add-comment');
 		e.preventDefault();
 		// load our new comment form
-
 	})
 }

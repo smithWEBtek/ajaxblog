@@ -19,7 +19,6 @@ class PostsController < ApplicationController
 	def new
 		@post = Post.new
 		respond_to do |f|
-			# f.html {render :new, layout: false}
 			f.html {render :new, layout: false}
 			f.json {render json: @post}
 		end
@@ -62,7 +61,6 @@ class PostsController < ApplicationController
 	end
 
 	private
-
 		def post_params
 			params.require(:post).permit(:title, :content)
 		end
