@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 		@post = Post.find(params["id"])
 		respond_to do |f|
 			f.html {render :show}
-			f.json {render json: @post}
+			f.json {render json: @post }
 		end
 	end
 	

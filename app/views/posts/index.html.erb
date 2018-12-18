@@ -1,21 +1,23 @@
-<h1>Posts Index</h1>
-
-<fieldset>
-<div id='new_post_form'>... new_post_form div in Rails view ... </div>
-</fieldset>
+<p>Posts Index</p>
+ 
+<div id='new_post_form'>[id='new_post_form']</div>
+ 
 <button class='ajax-new-post'>NewPost</button>
 <br>
 <br>
 
-<fieldset>
-<div id='post-details'>...post_details div in Rails view ... </div>
-</fieldset>
+<div id='post-details'>[div id='post-details']</div>
 <br>
 <br>
- 
+
 <div id='posts-index'>
-<% @posts.each do |post| %>
-	<h3><%= link_to post.title, post_path(post) %></h3>
-	<p><%= post.content %></p>
-<% end %>
+	<h3>....Rails....index.html.erb........</h3>
+	<% @posts.each do |post| %>
+	<h3>
+		<%= link_to post.title, post_path(post) %>
+	</h3>
+	<p>
+		<%= post.content %>
+	</p>
+	<% end %>
 </div>

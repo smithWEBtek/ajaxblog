@@ -1,36 +1,40 @@
 // document ready, listeners called
-$(() => {
-	listenerCommentsClick()
-	listenerNewPostFormClick()
-	listenerPostDetailsClick()
-	// listenerNewCommenClick()
+$(function () {
+	// console.log('the posts.js file loaded');
+	listenCommentsClick()
+	listenNewPostFormClick()
+	listenPostDetailsClick()
 	// why do we NOT listen for this on document ready?
+	// listenNewCommenClick()
+
 })
 
-// event listener for comment click
-function listenerCommentsClick() {
+// event listen for comment click
+function listenCommentsClick() {
 	$('a.load_comments').on('click', function (event) {
-		// 	alert('you clicked it');
 		event.preventDefault();
+
 		getPostComments(this.href);
 	})
 }
 
-// function called from event listener : listenerCommentsClick()
+// function called from event listen : listenCommentsClick()
 function getPostComments(url) {
 	$.ajax({
 		method: 'GET',
 		url: url,
 	}).done(function (data) {
 		console.log("the data: ", data);
+
+		debugger
 		// $('div#comments-html-area').html(data); // data in div is replaced // jquery way
 		// $('div#comments-html-area').append(data); // data piles up in DOM on each click!
 		document.getElementById('comments-html-area').innerHTML = data // javascript way
 	})
 }
 
-// event listener for new post form
-function listenerNewPostFormClick() {
+// event listen for new post form
+function listenNewPostFormClick() {
 	$('.ajax-new-post').on('click', function (e) {
 		e.preventDefault();
 		$('button#new-post').hide()
@@ -38,7 +42,7 @@ function listenerNewPostFormClick() {
 	})
 }
 
-// function called from event listener : listenerNewPostFormClick()
+// function called from event listen : listenNewPostFormClick()
 function newPostForm() {
 	$.ajax({
 		url: '/posts/new',
@@ -50,8 +54,8 @@ function newPostForm() {
 	})
 }
 
-// event listener
-function listenerPostDetailsClick() {
+// event listen
+function listenPostDetailsClick() {
 	$('div#posts-index a').on('click', function (event) {
 		event.preventDefault()
 		console.log("this is the url: ", this.href);
@@ -61,11 +65,13 @@ function listenerPostDetailsClick() {
 			type: 'get',
 			dataType: 'json'
 		}).done(function (data) {
+
+			debugger
 			let post = new Post(data)
 			let html = post.createPostHTML()
 			// $('#post-details').html = html   // why doesn't this work?
 			document.getElementById('post-details').innerHTML = html
-			listenerNewCommenClick()
+			listenNewCommenClick()
 		})
 	})
 }
@@ -81,7 +87,6 @@ class Post {
 
 // custom function on prototype of Post class
 Post.prototype.createPostHTML = function () {
-	console.log("this: ", this);
 	const comments = (
 		this.comments.map((comment, index) => {
 			return `<p id=${index}><em>${comment.content}</em></p>`
@@ -107,13 +112,14 @@ Post.prototype.createPostHTML = function () {
 	`)
 }
 
-// event listener for new comment click, to render new comment form
+// event listen for new comment click, to render new comment form
 // why is this not in our event listeners at the top of this page?
 // could we listen for it too soon, before the list of comments exists?
-// or is it better to call this listener only after we know there are comments on the DOM?
-function listenerNewCommenClick() {
+// or is it better to call this listen only after we know there are comments on the DOM?
+function listenNewCommenClick() {
 	$('button#add-comment').on('click', function (e) {
-		alert('you clicked add-comment');
+		// alert('you clicked add-comment');
+
 		e.preventDefault();
 		// load our new comment form
 	})
