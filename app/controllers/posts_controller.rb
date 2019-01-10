@@ -1,5 +1,11 @@
 class PostsController < ApplicationController
 
+
+	def new_comment_form
+	
+		render partial: 'posts/new_comment_form'
+	end
+
 	def index
 		@posts = Post.all
 		respond_to do |f|
@@ -18,10 +24,7 @@ class PostsController < ApplicationController
 	
 	def new
 		@post = Post.new
-		respond_to do |f|
-			f.html {render :new, layout: false}
-			f.json {render json: @post}
-		end
+
 	end
 	
 	def create

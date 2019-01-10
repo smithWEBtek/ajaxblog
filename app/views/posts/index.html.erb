@@ -1,17 +1,12 @@
-<p>Posts Index</p>
- 
-<div id='new_post_form'>[id='new_post_form']</div>
- 
-<button class='ajax-new-post'>NewPost</button>
-<br>
-<br>
 
-<div id='post-details'>[div id='post-details']</div>
-<br>
+<div id='ajax-posts'>.... ajax posts here .... </div>
+
+<button class='ajax-new-post'>NewPost</button>
+
+
 <br>
 
 <div id='posts-index'>
-	<h3>....Rails....index.html.erb........</h3>
 	<% @posts.each do |post| %>
 	<h3>
 		<%= link_to post.title, post_path(post) %>
