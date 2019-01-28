@@ -2,7 +2,6 @@ class PostsController < ApplicationController
 
 
 	def new_comment_form
-	
 		render partial: 'posts/new_comment_form'
 	end
 

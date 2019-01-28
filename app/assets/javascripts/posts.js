@@ -1,6 +1,6 @@
 $(function () {
 	console.log('posts.js is loaded ...')
-	listenForClick()
+	// listenForClick()
 });
 
 function listenForClick() {
@@ -18,15 +18,10 @@ function getPosts() {
 	}).done(function (data) {
 
 		console.log("the data is: ", data)
-
 		let mypost = new Post(data[0])
-
 		let myPostHTML = mypost.postHTML()
-
-
-		$('div#ajax-posts').html(myPostHTML)
-
-
+		// $('div#ajax-posts').html(myPostHTML)
+		document.getElementById('ajax-posts').innerHTML += myPostHTML
 	})
 }
 
