@@ -1,47 +1,50 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application', 'posts' %>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ajaxblog</title>
- 
-  </head>
-  <body>
-    <section class="section">
-      <div class="container">
-        <h1 class='subtitle'>Rails Blog</h1>
-      </div>
-      <div class="column">
-        Rails Links:
-				<%= link_to "Posts", posts_path %> |
-        <%= link_to "NewPost", new_post_path %>
-				<hr>
-        
-				<%= yield %>
 
-        <h1 class='subtitle'>Ajax Blog</h1>
-				<%= link_to "Posts", posts_path %> |
-        <%= link_to "NewPost", new_post_path, class: 'ajax-new-post' %>
-        <hr>
-        <div id="flash_messages" class="flash_style">
-          <% flash.each do |key, value| %>
-            <%= content_tag(:div, value, :class => "flash #{key}") %>
-          <% end %>
-        </div>
-				<br>
-				
-				<button id='posts-data'>Get Posts</button>
-				<div id='ajax-posts'>[posts...]</div>
-				<br>
-				<br>
-				
-				<button id='ajax-new-post'>New Post</button>
-				<div id="new-post-form-div">[form]</div>
-     
-    </section>
-  </body>
+<head>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+	<%= stylesheet_link_tag    'application', media: 'all' %>
+	<%= javascript_include_tag 'application', 'posts' %>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ajaxblog</title>
+
+</head>
+
+<body>
+	<section class="section">
+		<div class="container">
+			<h1 class='subtitle'>Rails Blog</h1>
+		</div>
+		<div class="column">
+			Rails Links:
+			<%= link_to "Posts", posts_path %> |
+			<%= link_to "NewPost", new_post_path %>
+			<hr>
+
+			<%= yield %>
+
+			<h1 class='subtitle'>Ajax Blog</h1>
+			<%= link_to "Posts", posts_path %> |
+			<%= link_to "NewPost", new_post_path, class: 'ajax-new-post' %>
+			<hr>
+			<div id="flash_messages" class="flash_style">
+				<% flash.each do |key, value| %>
+				<%= content_tag(:div, value, :class => "flash #{key}") %>
+				<% end %>
+			</div>
+			<br>
+
+			<button id='posts-data'>Get Posts</button>
+			<div id='ajax-posts'>[posts...]</div>
+			<br>
+			<br>
+
+			<button id='ajax-new-post'>New Post</button>
+			<div id="new-post-form-div">[form]</div>
+
+	</section>
+</body>
+
 </html>
