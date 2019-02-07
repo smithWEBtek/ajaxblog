@@ -15,16 +15,15 @@ function getPosts() {
 	$.ajax({
 		url: 'http://localhost:3000/posts',
 		method: 'get',
-		dataType: 'json'
-	}).done(function (data) {
-
-		console.log("the data is: ", data)
-		let mypost = new Post(data[0])
-		let myPostHTML = mypost.postHTML()
-		// debugger
-		// $('div#ajax-posts').html(myPostHTML)
-		document.getElementById('ajax-posts').innerHTML = myPostHTML
-
+		dataType: 'json',
+		success: function (data) {
+			console.log("the data is: ", data)
+			data.map(post => {
+				const newPost = new Post(post)
+				const newPostHtml = newPost.postHTML()
+				document.getElementById('ajax-posts').innerHTML += newPostHtml
+			})
+		}
 	})
 }
 
@@ -34,7 +33,6 @@ function listenForNewPostFormClick() {
 		let newPostForm = Post.newPostForm()
 		// $('div#new-post-form-div')
 		document.querySelector('div#new-post-form-div').innerHTML = newPostForm
-
 	})
 }
 
@@ -66,7 +64,7 @@ Post.prototype.postHTML = function () {
 	}).join('')
 
 	return (`	
-		<div>
+		<div class='post'>
 			<h3>${this.title}</h3>
 			<p>${this.content}</p>
 			<p>${postComments}</p>
